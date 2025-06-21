@@ -1,11 +1,4 @@
-/*
- * proxy_parse.hpp -- a HTTP Request Parsing Library.
- *
- * Written by: Matvey Arye
- * For: COS 518
- * Converted to C++ by Gemini
- *
- */
+
 
 // Line 1: #pragma once
 // This is a modern, non-standard but widely supported and highly efficient
