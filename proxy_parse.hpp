@@ -113,13 +113,14 @@ public:
 
     // Line 27: // Constructors for convenience
     // Line 28: ParsedHeader() = default; // Default constructor: initializes key and value to empty strings.
-    ParsedHeader() = default;
+    ParsedHeader();
 
     // Line 29: ParsedHeader(const std::string& k, const std::string& v) : key(k), value(v) {}
     // Parameterized constructor: allows initializing key and value directly upon creation.
-    ParsedHeader(const std::string& k, const std::string& v) : key(k), value(v) {}
+    ParsedHeader(const std::string& k, const std::string& v);
 
     // Line 30: // No need for keylen/valuelen, std::string handles their lengths automatically.
+    std::string toString() const;
 };
 
 // Line 31: /*
@@ -168,7 +169,7 @@ public:
      * Line 62: Takes a const std::string& for the buffer, which is efficient and safe.
      * Line 63: Returns 0 on success, -1 on failure. Consider throwing exceptions in modern C++.
      */
-    int parse(const std::string& buffer);
+    bool parse(const std::string& buffer);
 
     /* Line 64:
      * Line 65: unparse() method: Reconstructs the entire request into a string.
@@ -203,7 +204,7 @@ public:
      * Line 82: Replaces ParsedHeader_set().
      * Line 83: Returns 0 on success, -1 on failure.
      */
-    int setHeader(const std::string& key, const std::string& value);
+    void setHeader(const std::string& key, const std::string& value);
 
     /* Line 84:
      * Line 85: getHeader() method: Retrieves a pointer to a ParsedHeader object by key.
@@ -222,7 +223,7 @@ public:
      * Line 92: Replaces ParsedHeader_remove().
      * Line 93: Returns 0 on success, -1 on failure.
      */
-    int removeHeader(const std::string& key);
+    bool removeHeader(const std::string& key);
 
 private:
     // Line 94: // Private helper for parsing the initial request line buffer.
